@@ -1,0 +1,71 @@
+
+<style>
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+</style>
+
+<body>
+
+<h1> Custom Serch </h1>
+  
+<%= form_for @search, html: {class: "pure_form"} do |s| %>
+
+  <div class="field">
+    <%= s.label :Keywords %><br />
+    <%= s.text_field :keywords%>
+  </div>
+
+  <div class="field">
+    <%= s.label :category %><br />
+    <%= s.select :category, options_for_select(@categories), :include_blank => true%>
+  </div>
+
+  <div class="field">
+   <p> <%= s.label :min_price, "Min Price" %> - <%= s.text_field :min_price, size: 10 %></p>
+    <p><%= s.label :max_price, "Max Price" %> - <%= s.text_field :max_price, size: 10 %></p>
+  </div>
+
+  <div class="field">
+    <%= s.label :isbn %>
+    <p><%= s.label :isbn, "ISBN" %> - <%= s.text_field :isbn, size: 10 %></p>
+  </div>
+
+
+
+  <div class="actions">
+    <%= s.submit "Search", class: "pure-button pure-button-primary" %>
+  </div>
+
+<% end %>
+
+<p> <%= link_to "Back", books_path %> </p>  
+
+</body>
